@@ -7,8 +7,8 @@ const deleteUserService = async (req: Request) => {
   if (!delUser) {
     return undefined;
   }
-
-  const deleteUser = await new UserRepository().deleteUser(req.params.email);
+  req.email;
+  const deleteUser = await new UserRepository().deleteUser(req.email);
 
   return delUser;
 };
