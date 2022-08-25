@@ -8,4 +8,8 @@ const updateUserService = async (req: Request) => {
     userInfo,
     req.validated
   );
+
+  return updateUser;
 };
+
+export default updateUserService;
