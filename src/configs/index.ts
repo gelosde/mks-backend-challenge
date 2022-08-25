@@ -1,6 +1,6 @@
-import dotenv from "dotenv"
+import dotenv = require("dotenv");
 
-dotenv.config()
+dotenv.config();
 
 interface JWTConfig {
   secretKey: string;
@@ -11,6 +11,5 @@ const jwtConfig: JWTConfig = {
   secretKey: process.env.SECRET_KEY,
   expiresIn: process.env.EXPIRES_IN,
 };
-
 
 export { jwtConfig };
