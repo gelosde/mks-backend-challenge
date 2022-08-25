@@ -16,10 +16,7 @@ class UserRepository implements IsuerRepo {
   findUsers = async () => await this.ormrepository.find();
 
   findEmail = async (email: string) =>
-    await this.ormrepository.findOne(
-      { email: email },
-      { relations: ["character"] }
-    );
+    await this.ormrepository.findOne({ email: email });
   updateUser = async (user: Iuser, reqBody: object) =>
     await this.ormrepository.update(user, reqBody);
   deleteUser = async (email: string) =>
