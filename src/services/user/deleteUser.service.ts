@@ -2,15 +2,15 @@ import { Request } from "express";
 import { UserRepository } from "../../repositories";
 
 const deleteUserService = async (req: Request) => {
-  const delUser = await new UserRepository().findUserByEmail(req.params.email);
-
+  const delUser = await new UserRepository().findUserByEmail(req.email);
+  let deleterStatus: any = delUser;
   if (!delUser) {
-    return undefined;
+    deleterStatus = undefined;
   }
-  req.email;
+
   const deleteUser = await new UserRepository().deleteUser(req.email);
 
-  return delUser;
+  return deleterStatus;
 };
 
 export default deleteUserService;

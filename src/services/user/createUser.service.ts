@@ -7,6 +7,7 @@ const createUserService = async (req: Request) => {
   const users: User = {
     ...req.validated,
   };
+
   users.password = bcrypt.hashSync(users.password, 10);
 
   const Registerede: Iuser = await new UserRepository().saveUser(users);
