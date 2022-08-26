@@ -8,8 +8,9 @@ import getBydirector from "./MoviesControllers/getByDirectorController";
 import getTitleMovieControler from "./MoviesControllers/getByTitleController";
 import allMoviescontroller from "./MoviesControllers/getAllMoviesController";
 import registerMovieController from "./MoviesControllers/registerController";
-
+import loginController from "./user/loginUsers";
 export {
+  loginController,
   getBydirector,
   getTitleMovieControler,
   allMoviescontroller,

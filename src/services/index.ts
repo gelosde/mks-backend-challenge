@@ -8,6 +8,7 @@ import getByTitleService from "./MoviesServices/getMovieByTitle.service";
 import allMoviesService from "./MoviesServices/getAllMovies.service";
 import updateMovieService from "./MoviesServices/updateMovie.service";
 import registerMovieService from "./MoviesServices/registerMovie.service";
+import login from "./user/login.service";
 export {
   createUserService,
   deleteUserService,
@@ -19,4 +20,5 @@ export {
   allMoviesService,
   updateMovieService,
   registerMovieService,
+  login,
 };
