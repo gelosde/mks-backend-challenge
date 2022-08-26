@@ -1,5 +1,5 @@
-import dotenv = require("dotenv");
-import path = require("path");
+import * as dotenv from "dotenv";
+import * as path from "path";
 dotenv.config();
 
 const dbConfig = {
