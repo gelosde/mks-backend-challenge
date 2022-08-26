@@ -1,17 +1,17 @@
-const dotenv = require("dotenv");
-const pats = require("path");
+import { config } from "dotenv";
+import { join } from "path";
 
-dotenv.config();
+config();
 
 const dbConfig = {
   type: "postgres",
   url: process.env.DATABASE_URL,
   logging: false,
-  entities: [pats.join(__dirname, "./src/entities/**/*.ts")],
-  migrations: [pats.join(__dirname, "./src/migrations/**/*.ts")],
+  entities: [join(__dirname, "./src/entities/**/*.ts")],
+  migrations: [join(__dirname, "./src/migrations/**/*.ts")],
   cli: {
-    entitiesDir: pats.join(__dirname, "./src/entities"),
-    migrationsDir: pats.join(__dirname, "./src/migrations"),
+    entitiesDir: join(__dirname, "./src/entities"),
+    migrationsDir: join(__dirname, "./src/migrations"),
   },
 };
 
@@ -19,11 +19,11 @@ const dbProductionConfig = {
   type: "postgres",
   url: process.env.DATABASE_URL,
   logging: false,
-  entities: [pats.join(__dirname, "./build/src/entities/**/*.js")],
-  migrations: [pats.join(__dirname, "./build/src/migrations/**/*.js")],
+  entities: [join(__dirname, "./build/src/entities/**/*.js")],
+  migrations: [join(__dirname, "./build/src/migrations/**/*.js")],
   cli: {
-    entitiesDir: pats.join(__dirname, "./build/src/entities"),
-    migrationsDir: pats.join(__dirname, "./build/src/migrations"),
+    entitiesDir: join(__dirname, "./build/src/entities"),
+    migrationsDir: join(__dirname, "./build/src/migrations"),
   },
   ssl: { rejectUnauthorized: false },
 };
