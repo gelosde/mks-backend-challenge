@@ -1,5 +1,4 @@
 import { Router } from "express";
-
 import * as schemas from "../../schema";
 import * as midle from "../../middlewares";
 import * as controlers from "../../controllers";
@@ -32,4 +31,16 @@ user.post(
   midle.checkExistRegister,
   controlers.register
 );
-user.post("/user/login", midle.validateSchema(schemas.schemaLogin));
+user.post(
+  "/user/login",
+  midle.validateSchema(schemas.schemaLogin),
+  controlers.loginController
+);
+
+user.patch(
+  "user/update/profile",
+  midle.authenticatedUser,
+  midle.validateSchema(schemas.updateUserSchema),
+  controlers.updateUser
+);
+export default user;

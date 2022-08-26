@@ -5,7 +5,7 @@ import { jwtConfig } from "../../configs/index";
 import { UserRepository } from "../../repositories";
 
 const login = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+  const { email, password } = req.validated;
 
   const userFinder = await new UserRepository().findUserByEmail(email);
 
