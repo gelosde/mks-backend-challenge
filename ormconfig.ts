@@ -1,7 +1,7 @@
-import { config } from "dotenv";
+const dotenv = require("dotenv");
 import { join } from "path";
 
-config();
+dotenv.config();
 
 const dbConfig = {
   type: "postgres",
