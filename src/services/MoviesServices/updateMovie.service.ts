@@ -5,7 +5,12 @@ const updateMovieService = async (req: Request, res: Response) => {
   const movieInfo = await new MovieRepository().findMovietitle(
     req.params.title
   );
-  let verifyMovieDuration = req.validated.duration;
+
+  let verifyMovieDuration = movieInfo.duration;
+
+  if (req.validated.duration) {
+    verifyMovieDuration = req.validated.duration;
+  }
 
   let timeVerifyHour = parseInt(verifyMovieDuration.split(":")[0]);
 
@@ -31,9 +36,8 @@ const updateMovieService = async (req: Request, res: Response) => {
       movieInfo,
       req.validated
     );
-    response = res
-      .status(200)
-      .json({ smg: "movie updated", theMovieUpdated: updateMovie });
+
+    response = res.status(200).json({ smg: "movie updated" });
   }
   return response;
 };

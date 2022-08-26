@@ -12,7 +12,9 @@ const deleteMovieService = async (req: Request, res: Response) => {
       .json({ msg: "movie not found cant be deleted" });
   } else {
     const deletMovie = await new MovieRepository().deleteMovie(findMovie.title);
-    responser = res.status(200).json(deletMovie);
+    responser = res
+      .status(200)
+      .json({ smg: "the movie is deleted", findMovie });
   }
   return responser;
 };

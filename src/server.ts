@@ -9,6 +9,8 @@ createConnection()
   .then(() => {
     const PORT = process.env.PORT || 3000;
     console.log("Database connected");
-    app.listen(PORT, () => console.log(`App runing on port ${PORT}`));
+    app.listen(PORT, () =>
+      console.log(`App runing on port http://localhost:${PORT}`)
+    );
   })
   .catch((error) => console.log(error));

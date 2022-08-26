@@ -3,14 +3,11 @@ import { UserRepository } from "../../repositories";
 
 const deleteUserService = async (req: Request) => {
   const delUser = await new UserRepository().findUserByEmail(req.email);
-  let deleterStatus: any = delUser;
-  if (!delUser) {
-    deleterStatus = undefined;
-  }
+  let deleterStatus = delUser;
 
   const deleteUser = await new UserRepository().deleteUser(req.email);
 
-  return deleterStatus;
+  return deleteUser;
 };
 
 export default deleteUserService;

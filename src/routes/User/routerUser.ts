@@ -8,39 +8,40 @@ const user = Router();
 user.get("/user/profile", midle.authenticatedUser, controlers.getProfile);
 
 user.get(
-  "/user/listMovies",
+  "/listMovies",
   midle.authenticatedUser,
   controlers.allMoviescontroller
 );
 
 user.get(
-  "/user/MoviesbyTitle/:title",
+  "/moviesbytitle/:title",
   midle.authenticatedUser,
   controlers.getTitleMovieControler
 );
 
 user.get(
-  "/user/listByDirector/:director",
+  "/listByDirector/:director",
   midle.authenticatedUser,
   controlers.getBydirector
 );
 
 user.post(
-  "/user/register",
+  "/register",
   midle.validateSchema(schemas.schemaRegister),
   midle.checkExistRegister,
   controlers.register
 );
 user.post(
-  "/user/login",
+  "/login",
   midle.validateSchema(schemas.schemaLogin),
   controlers.loginController
 );
 
 user.patch(
-  "user/update/profile",
+  "/update/profile",
   midle.authenticatedUser,
   midle.validateSchema(schemas.updateUserSchema),
   controlers.updateUser
 );
+user.delete("/user/delete", midle.authenticatedUser, controlers.deleteSelfUser);
 export default user;

@@ -10,7 +10,7 @@ const createUserService = async (req: Request) => {
 
   users.password = bcrypt.hashSync(users.password, 10);
 
-  const Registerede: Iuser = await new UserRepository().saveUser(users);
+  const Registerede = await new UserRepository().saveUser(users);
 
   return Registerede;
 };

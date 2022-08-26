@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { createUserService } from "../../services";
 
 const register = async (req: Request, res: Response) => {
-  const Registerede = await createUserService(req.validated);
+  const Registerede = await createUserService(req);
 
   return res.status(201).json({
     id: Registerede.id,

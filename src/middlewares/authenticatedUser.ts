@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import jwt = require("jsonwebtoken");
+import * as jwt from "jsonwebtoken";
 import { jwtConfig } from "../configs";
 
 const authenticatedUser = async (

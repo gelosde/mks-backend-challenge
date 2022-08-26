@@ -6,21 +6,22 @@ import * as controlers from "../../controllers";
 const admRouter = Router();
 
 admRouter.post(
-  "/admin/newMovie",
+  "/newMovie",
   midle.authenticatedUser,
   midle.verifyUserPermission,
   midle.validateSchema(schemas.schemaRegisterMovie),
   controlers.registerMovieController
 );
 admRouter.patch(
-  "/admin/update/:title",
+  "/update/:title",
   midle.authenticatedUser,
   midle.verifyUserPermission,
-  midle.validateSchema(schemas.updateUserSchema)
+  midle.validateSchema(schemas.schemaUpdateMovie),
+  controlers.updateMovieController
 );
 
 admRouter.delete(
-  "/admin/delete/:title",
+  "/delete/:title",
   midle.authenticatedUser,
   midle.verifyUserPermission,
   controlers.deleteMovieController
