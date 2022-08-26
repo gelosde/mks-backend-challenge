@@ -6,3 +6,4 @@ const schemaRegisterMovie = yup.object().shape({
   released: yup.date().required(),
   duration: yup.string().required(),
 });
+export default schemaRegisterMovie;
