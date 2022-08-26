@@ -1,5 +1,6 @@
 import { config } from "dotenv";
 import { join } from "path";
+
 config();
 
 const dbConfig = {
