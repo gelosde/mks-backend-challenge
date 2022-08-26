@@ -5,7 +5,7 @@ import * as controlers from "../../controllers";
 
 const user = Router();
 
-user.get("/user/profile", midle.authenticatedUser, controlers.getProfile);
+user.get("/profile", midle.authenticatedUser, controlers.getProfile);
 
 user.get(
   "/listMovies",
@@ -43,5 +43,5 @@ user.patch(
   midle.validateSchema(schemas.updateUserSchema),
   controlers.updateUser
 );
-user.delete("/user/delete", midle.authenticatedUser, controlers.deleteSelfUser);
+user.delete("/delete", midle.authenticatedUser, controlers.deleteSelfUser);
 export default user;

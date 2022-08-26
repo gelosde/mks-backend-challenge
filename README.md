@@ -1,38 +1,157 @@
-Diretrizes do desafio
-===========================
+# Heroku: https://cine-more.herokuapp.com
 
-Por favor organize, design, teste, faça a documentação e deploy do seu código da forma como se ele fosse para produção, depois nos envie um link do repositório no Github.
+## Ferramentas utilizadas e tempo de experiencia
 
-Tarefa (funcional)
----------------
+1. TypeScript (1 ano e meio de experiencia)
+2. Nest.js (atualmente sem experiencia porem iniciando estudo)
+3. TypeORM (1 ano de experiencia)
+4. Swagger (atualmente sem experiencia por preferir o readme posso aprender se for um requisito obrigatorio)
+5. Docker (8 meses de experiencia)
+6. Redis (sem experiencia sem experiencia)
+7. PostgreSQL (1 ano de experiencia)
 
-1. Desenvolva um sistema de autenticação JWT.
-2. Você deve construir uma CRUD de um catálogo de filmes. Todos os endpoints dessa CRUD só devem ser consumidos por um usuário autenticado.
+Obs tirando o registro todas as rotas precisam do usuario logado e update, registro e deleção de filmes so por admins
 
-Ferramentas requeridas
----------------
+## Rotas com o metodo post
 
-1. TypeScript
-2. Nest.js
-3. TypeORM
-4. Swagger
-5. Docker
-6. Redis
-7. PostgreSQL
+### /api/user/register
 
-Aspectos técnicos
----------------
+**em caso de registro do admin**
 
-A arquitetura deve ser composta de uma aplicação provendo uma API RESTful em JSON, utilize do Redis como seu cache.
+<p>{
+<p>	"email": "usuariox@gmadil.com",
+<p>	"password": "1100",
+<p>	"isAdm": true
+<p>}
 
-OBS: Lembre-se de validar a informação tratada em cada endpoint.
+status code 201
 
-Back-end
----------------
+**do contrario**
 
-Engenharia de qualidade é saber utilizar da ferramenta certa para o trabalho certo, e seguir aprendendo constantemente sobre ela. Sabendo disso, sinta-se livre para mencionar no `README` quanto tempo de experiência você possui com cada uma delas, fazendo isso levaremos em consideração ao avaliar seu desafio. 
+<p>{
+<p>	"email": "usuariox@gmadil.com",
+<p>	"password": "1100",
+<p>}
 
-Faça o deploy!
----------------
+status code 201
 
-Ao finalizar, faça o deploy no lugar que te for mais confortável (exemplo: Amazon EC2, Heroku, Netlify, Google AppEngine, etc)
+### /api/user/login/
+
+**independente de ser admin ou não**
+
+<p>{
+<p>	"email": "usuariox@gmadil.com",
+<p>	"password": "1100",
+<p>}
+
+status code 200
+
+### /api/adm/newMovie
+
+**apenas o admin pode postar filmes**
+
+<p>{
+<p>"title": "aquelefilme",
+<p>"director": "string",
+<p>"released": "07/11/2001",
+<p>"duration": "20:3:4"
+<p>}
+
+status code 201
+
+## Rotas com o metodo get
+
+### /api/user/profile
+
+**Profile do usuario**
+
+<p>{
+<p>"id": "792d156f-5365-400e-8e31-72567237891d",
+<p>"email": "exemplo@gmadil.com",
+<p>"password": "$2a$10$.MN8/.hTunLXdo7auqa26u1LkiHt7c2O2jUy7skU.5vbCRY9PuUkG",
+<p>"isAdm": true
+<p>}
+
+status code 200
+
+### /api/user/listMovies
+
+**Retornar um array contendo todos os filmes na api**
+
+<p>[ "movie": {
+<p>"duration": "20:3:4",
+<p>"released": "2001-07-11T03:00:00.000Z",
+<p>"director": "string",
+<p>"title": "aquelefilme",
+<p>"id": "fe307626-24a0-4d9c-adee-12c55396db22"
+<p>}]
+
+status code 200
+
+### /user/moviesbytitle/:titulo_do_filme
+
+**deve retornar o filme com o titulo definido**
+
+<p>"movie": {
+<p>"duration": "20:3:4",
+<p>"released": "2001-07-11T03:00:00.000Z",
+<p>"director": "string",
+<p>"title": "aquelefilme",
+<p>"id": "fe307626-24a0-4d9c-adee-12c55396db22"
+<p>}
+
+status code 200
+
+### /api/user/listByDirector/:diretor_do_filme
+
+**deve retornar um array com todos os filmes feitos pelo diretor**
+
+<p>[ "movie": {
+<p>"duration": "20:3:4",
+<p>"released": "2001-07-11T03:00:00.000Z",
+<p>"director": "string",
+<p>"title": "aquelefilme",
+<p>"id": "fe307626-24a0-4d9c-adee-12c55396db22"
+<p>}]
+
+status code 200
+
+## Rotas com o update(patch)
+
+#### /api/user/update/profile
+
+**o usuario so pode atualizar as proprias informações corpo da requisição**
+
+<p>{
+<p>	"email": "usuarioxyzolamundo@gmadil.com",
+<p>	"password": "1111",
+<p>}
+
+status code 200
+
+### /api/adm/update/:titulo_do_filme
+
+**corpo da requisição**
+
+<p>{
+<p>"title": "aquele filme modificado",
+<p>"director": "string",
+<p>"released": "07/11/2022",
+<p>"duration": "2:3:4"
+<p>}
+
+status code 200
+
+## Rotas com o delete
+
+### /api/user/delete
+
+** o usuario deleta a propria conta**
+
+status code 200
+
+## /api/adm/delete/:titulo_do_filme
+
+**so o adimin pode deletar o filme**
+
+status code 200
