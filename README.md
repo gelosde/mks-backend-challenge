@@ -127,6 +127,18 @@ status code 200
 <p>	"password": "1111",
 <p>}
 
+**retorno esperado**
+
+<p>{
+<p>"msg": "User updated",
+<p>"updatedInfo": {
+<p>"id": "010a8633-aa85-4672-b4b7-c1ce56d73557",
+<p>"email": "usuarioxyzolamundo@gmadil.com",
+<p>"password": "$2a$10$oo2VtZPsnVXDNuneiYNwpu08fwyW1D4vBgrB8l2E4AavDOWc/Xjaq",
+<p>"isAdm": true
+<p>}
+<p>}
+
 status code 200
 
 ### /api/adm/update/:titulo_do_filme
@@ -140,13 +152,33 @@ status code 200
 <p>"duration": "2:3:4"
 <p>}
 
-status code 200
+resposta status code 200
 
+<p>{
+<p>"smg": "movie updated!",
+<p>"updatedmovie": {
+<p>"id": "fe307626-24a0-4d9c-adee-12c55396db22",
+<p>"title": "aquele filme modificado",
+<p>"director": "string",
+<p>"released": "07/11/2022",
+<p>"duration": "2:3:4"
+<p>}
+<p>}
 ## Rotas com o delete
 
 ### /api/user/delete
 
 ** o usuario deleta a propria conta**
+
+resposta recebida:
+
+<p>{ msg: "user deleted"
+<p>user:{
+<p>	"id": "010a8633-aa85-4672-b4b7-c1ce56d73557",
+<p>	"email": "angelo@gmadil.com",
+<p>	"password": "$2a$10$oo2VtZPsnVXDNuneiYNwpu08fwyW1D4vBgrB8l2E4AavDOWc/Xjaq",
+<p>	"isAdm": true
+<p>}}
 
 status code 200
 

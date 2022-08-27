@@ -8,8 +8,13 @@ const updateUserService = async (req: Request) => {
     userInfo,
     req.validated
   );
-
-  return updateUser;
+  let updaterInfo = {};
+  if (req.validated.email) {
+    updaterInfo = await new UserRepository().findEmail(req.validated.email);
+  } else {
+    updaterInfo = await new UserRepository().findEmail(req.email);
+  }
+  return updaterInfo;
 };
 
 export default updateUserService;

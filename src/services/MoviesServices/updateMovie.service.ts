@@ -36,8 +36,21 @@ const updateMovieService = async (req: Request, res: Response) => {
       movieInfo,
       req.validated
     );
+    let updateMovieInfo = {};
 
-    response = res.status(200).json({ smg: "movie updated" });
+    if (req.validated.title)
+      updateMovieInfo = await new MovieRepository().findMovietitle(
+        req.validated.title
+      );
+    else {
+      updateMovieInfo = await new MovieRepository().findMovietitle(
+        req.params.title
+      );
+    }
+
+    response = res
+      .status(200)
+      .json({ smg: "movie updated!", updatedmovie: updateMovieInfo });
   }
   return response;
 };
