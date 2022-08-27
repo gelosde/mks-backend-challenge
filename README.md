@@ -7,7 +7,7 @@
 3. TypeORM (1 ano de experiencia)
 4. Swagger (atualmente sem experiencia por preferir o readme posso aprender se for um requisito obrigatorio)
 5. Docker (8 meses de experiencia)
-6. Redis (sem experiencia sem experiencia)
+6. Redis (sem experiencia)
 7. PostgreSQL (1 ano de experiencia)
 
 Obs tirando o registro todas as rotas precisam do usuario logado e update, registro e deleção de filmes so por admins
